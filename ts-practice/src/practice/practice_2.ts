@@ -1,0 +1,42 @@
+export type ProductsType = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
+  images: string[];
+};
+
+export type CategoriesType = {
+  id: number;
+  name: string;
+  image: string;
+};
+
+const BASE_URL = "https://api.escuelajs.co/api/v1";
+
+export const getDataUtilFunc = async <T>(path: string = '', query?: string): Promise<T> => {
+  try {
+    const response = await fetch(BASE_URL + path + `${query ? query : ""}`);
+
+    if (!response.ok) {
+      throw new Error("Error");
+    }
+
+    const data: T = await response.json();
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+    }
+    throw error;
+    // catch ブロックで何も返していないと、関数の型 Promise<T> と矛盾する。
+    //TypeScript は「この関数は Promise<T> を返すはずなのに、catchで値が返っていない場合がある」と怒る。
+    // なので、throw error; として、Promise<T> を返さない場合があることを明示的に示す。
+    //(細かく言うと関数はPromiseを返すことを止めたわけではなく、「reject(拒否)されたPromise」を返す」 と TypeScript は判断する)
+  }
+};
