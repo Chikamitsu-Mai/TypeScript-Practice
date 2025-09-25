@@ -1,0 +1,131 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.formItem.is_error input {
+  border: 1px solid red;
+}
+
+.form {
+  margin: auto;
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 40px 0 0;
+}
+
+.formItem label {
+  display: flex;
+  width: 120px;
+  font-size: 16px;
+}
+
+.formItem label::after {
+  content: "*";
+  color: #ff0000;
+}
+
+.formItem input[type="text"] {
+  width: 300px;
+  height: 40px;
+}
+
+.formItem--mail input[type="text"],
+.formItem--address input[type="text"] {
+  width: 400px;
+}
+
+.formItem--code input[type="text"] {
+  width: 200px;
+}
+
+.formItem__inner {
+  position: relative;
+}
+
+.formItem--code .formItem__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.formItem__inner span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 8px));
+  word-break: keep-all;
+  pointer-events: none;
+}
+
+.formItem__inner input {
+  border: solid 1px #000;
+}
+
+.formItem--agree {
+  justify-content: center;
+}
+
+.formItem--agree label {
+  width: auto;
+}
+
+.formItem--agree input {
+  position: relative;
+  width: 20px;
+  aspect-ratio: 1;
+  border: solid 1px #000;
+}
+
+.formItem--agree input.is-agree::before {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  content: "";
+  display: block;
+  width: 8px;
+  height: 1px;
+  border-top: 2px solid #000;
+  transform: rotate(45deg);
+}
+
+.formItem--agree input.is-agree::after {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  content: "";
+  display: block;
+  width: 12px;
+  height: 1px;
+  border-top: 2px solid #000;
+  transform: rotate(-45deg);
+}
+
+.formButton {
+  display: block;
+  width: 80px;
+  height: 32px;
+  margin: 48px 0 0;
+  margin-inline: auto;
+  background-color: #fff;
+}
+
+.formButton.is_disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
