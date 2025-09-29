@@ -20,9 +20,9 @@ type CategoriesType = {
 const BASE_URL = "https://api.escuelajs.co/api/v1";
 
 const getDataUtilFunc = async <T>(
-  path: string = "",
+  path: string = "/products",
   query?: string
-): Promise<T> => {
+): Promise<T | void> => {
   try {
     const response = await fetch(BASE_URL + path + `${query ? query : ""}`);
 
@@ -36,7 +36,6 @@ const getDataUtilFunc = async <T>(
     if (error instanceof Error) {
       console.error(error);
     }
-    throw error;
     // catch ブロックで何も返していないと、関数の型 Promise<T> と矛盾する。
     //TypeScript は「この関数は Promise<T> を返すはずなのに、catchで値が返っていない場合がある」と怒る。
     // なので、throw error; として、Promise<T> を返さない場合があることを明示的に示す。
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 商品ボタンをクリックしたとき
   if (productsButton instanceof HTMLButtonElement) {
     productsButton.addEventListener("click", async () => {
-      const productsArray = await getDataUtilFunc<ProductsType[]>("/products");
+      const productsArray = await getDataUtilFunc<ProductsType[]>();
       console.log(productsArray);
     });
   }
@@ -73,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // カテゴリボタンをクリックしたとき
   if (categoriesButton instanceof HTMLButtonElement) {
     categoriesButton.addEventListener("click", async () => {
-      const categoriesArray = await getDataUtilFunc<CategoriesType[]>("/categories");
+      const categoriesArray = await getDataUtilFunc<CategoriesType[]>(
+        "/categories"
+      );
       console.log(categoriesArray);
     });
   }
