@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フォーム</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <form class="form" action="/" method="get" novalidate>
+    <div class="formItem formItem--full js_required">
+      <label for="fullName">お名前</label>
+      <div class="formItem__inner">
+        <input type="text" id="fullName" required>
+        <span class="error" id="fullNameError"></span>
+      </div>
+    </div>
+    <div class="formItem formItem--kana">
+      <label for="kanaName">ふりがな</label>
+      <div class="formItem__inner">
+        <input type="text" id="kanaName" required>
+        <span class="error" id="kanaNameError"></span>
+      </div>
+    </div>
+    <div class="formItem formItem--mail">
+      <label for="email">メールアドレス</label>
+      <div class="formItem__inner">
+        <input type="text" id="email" required>
+        <span class="error" id="emailError"></span>
+      </div>
+    </div>
+    <div class="formItem formItem--code">
+      <label for="zipCode">郵便番号</label>
+      <div class="formItem__inner">
+        <input type="text" id="zipCode" required>
+        <button type="button" id="searchAddress">住所検索</button>
+        <span class="error" id="zipCodeError"></span>
+      </div>
+    </div>
+    <div class="formItem formItem--address js_required">
+      <label for="address">住所</label>
+      <div class="formItem__inner">
+        <input type="text" id="address" required>
+        <span class="error" id="addressError"></span>
+      </div>
+    </div>
+    <div class="formItem formItem--agree">
+      <input type="checkbox" id="agreement" required>
+      <div class="formItem__inner">
+        <label for="agreement">同意する</label>
+        <span class="error" id="agreementError"></span>
+      </div>
+    </div>
+    <button class="formButton" type="submit">送信</button>
+  </form>
+
+  <!-- コンパイルされたJSファイルを指定してください。 -->
+  <script src="./dist/index.js"></script>
+</body>
+
+</html>
